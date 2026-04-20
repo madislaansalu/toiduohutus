@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toiduhügieeni koolitus - Toiduohutus</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .sisu-kast {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .sisu-kast h1 { color: #2e7d32; margin-bottom: 1rem; font-size: 1.8rem; }
+        .sisu-kast h2 { color: #2e7d32; margin: 1.5rem 0 0.75rem; font-size: 1.4rem; border-bottom: 2px solid #e8f5e9; padding-bottom: 0.4rem; }
+        .sisu-kast h3 { color: #388e3c; margin: 1.25rem 0 0.5rem; font-size: 1.1rem; }
+        .sisu-kast p { line-height: 1.7; margin-bottom: 0.9rem; }
+        .sisu-kast ul, .sisu-kast ol { margin: 0.5rem 0 1rem 1.5rem; line-height: 1.7; }
+        .sisu-kast li { margin-bottom: 0.4rem; }
+        .sisu-kast strong { color: #1b5e20; }
+        .märkus {
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .hoiatus {
+            background: #fff3e0;
+            border-left: 4px solid #f57c00;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .tähtis {
+            background: #ffebee;
+            border-left: 4px solid #c62828;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .sisukord {
+            background: #f1f8e9;
+            border: 1px solid #c5e1a5;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .sisukord h2 { color: #2e7d32; margin-bottom: 1rem; }
+        .sisukord ol { margin-left: 1.2rem; }
+        .sisukord li { margin-bottom: 0.3rem; }
+        .sisukord a { color: #388e3c; text-decoration: none; }
+        .sisukord a:hover { text-decoration: underline; }
+        hr { border: none; border-top: 2px solid #e8f5e9; margin: 2rem 0; }
+        .tagasi-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .tagasi-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Toiduohutus</h1>
+        <p>Koolitusmaterjalid</p>
+    </header>
+
+    <nav>
+        <a href="../index.html">Avaleht</a>
+        <a href="index.html">Materjalid</a>
+    </nav>
+
+    <main>
+        <a href="index.html" class="tagasi-link">← Tagasi materjalide juurde</a>
+
+        <div class="sisukord">
+            <h2>Sisukord</h2>
+            <ol>
+                <li><a href="#eesmark">Toiduhügieeni eesmärk ja põhimõtted</a></li>
+                <li><a href="#miks">Miks on vaja hügieenireegleid?</a></li>
+                <li><a href="#enesekontroll">Enesekontroll ja selle põhimõtted</a></li>
+                <li><a href="#riskitegurid">Riskitegurid ehk ohud</a></li>
+                <li><a href="#bioloogiline">Bioloogiline oht</a></li>
+                <li><a href="#fuusikaline">Füüsikalised ohud</a></li>
+                <li><a href="#keemiline">Keemilised ohud</a></li>
+                <li><a href="#sailitamine">Säilitamine</a></li>
+                <li><a href="#ristsaastumine">Ristsaastumine</a></li>
+                <li><a href="#puhastamine">Puhastamine ja desinfitseerimine</a></li>
+                <li><a href="#jaatmed">Jäätmekäitlus</a></li>
+                <li><a href="#kahjurid">Kahjuritõrje</a></li>
+                <li><a href="#transport">Transport</a></li>
+                <li><a href="#isiklik">Isiklik hügieen</a></li>
+                <li><a href="#hygieeniriided">Hügieeniriided</a></li>
+                <li><a href="#ruumid">Nõuded ruumidele</a></li>
+            </ol>
+        </div>
+
+        <div class="sisu-kast" id="eesmark">
+            <h1>Toiduhügieeni eesmärk ja põhimõtted</h1>
+            <p>Tervislik toit on inimeste heaolu ja töövõime alus. Toidu tervislikkuse tagab selle täisväärtuslikkus, vastavus organismi vajadustele ning ohutus.</p>
+            <p>Inimestel on õigus eeldada, et nende söödav toit on ohutu ja toidukõlblik. Toidust põhjustatud haigus või vigastus on parimal juhul ebameeldiv, halvimal juhul aga lõppeda surmaga. Toidust põhjustatud haiguspuhangud võivad kahjustada kaubandust ja turismi, põhjustada töötust ja kohtuvaidlusi.</p>
+            <p><strong>Toiduhügieen</strong> on meetmed ja tingimused ohtude ohjamiseks ning toidu kõlblikkuse tagamine inimtoiduks (EL määrus 852/2004). See hõlmab kõiki töövõtteid, mille eesmärgiks on:</p>
+            <ul>
+                <li>kaitsta toitu saastumise eest (katmine, pakendamine, õiged töövõtted, ristsaastumise vältimine)</li>
+                <li>takistada bakterite paljunemist määrani, mis põhjustab haigestumist (külmkapp, vaakumpakend)</li>
+                <li>hävitada patogeensed bakterid kuumutamise või töötlemise teel</li>
+            </ul>
+            <p><strong>Toiduohutuse üldpõhimõtted:</strong> ohutus, vastutus, jälgitavus, läbipaistvus, hädaolukordade lahendamine, ennetamine ja koostöö PTA-ga (Põllumajandus- ja Toiduamet).</p>
+            <div class="hoiatus">
+                <strong>Halva hügieeni tagajärjed:</strong> toidu saastumine ja riknemine, klientide haigestumised, trahvid, halb maine, ettevõtte tegevuse peatamine.
+            </div>
+        </div>
+
+        <div class="sisu-kast" id="miks">
+            <h2>Miks on vaja hügieenireegleid?</h2>
+            <p><strong>Toit peab olema ohutu.</strong> Toiduhügieeniga seotud tegevuste peamine eesmärk on:</p>
+            <ul>
+                <li><strong>kaitsta toitu saastumise eest</strong></li>
+                <li>ennetada, kõrvaldada või vähendada mikrobioloogilist, füüsikalist ja keemilist saastumist vastuvõetavale tasemele</li>
+            </ul>
+            <p><strong>Toidu ohutuse eest vastutab toidu käitleja. Käitlejal on enesekontrollikohustus.</strong></p>
+
+            <h3>Kes on toidu käitlejad?</h3>
+            <p>Toidu käitleja on iga isik, kes oma töö käigus puutub kokku toidu, toidupakendi või toidukäitlemisruumidega:</p>
+            <ul>
+                <li>Tootmisega seotud töötajad</li>
+                <li>Laohoidja</li>
+                <li>Tõstukijuht</li>
+                <li>Toiduaineid vedav autojuht</li>
+                <li>Toiduainetööstuse töötaja</li>
+                <li>Koristaja</li>
+                <li>Toiduainete müüja</li>
+                <li>Teenindaja toitlustusettevõttes</li>
+            </ul>
+
+            <h3>Seadusandlus</h3>
+            <p>Toidukäitlemine on reguleeritud nii Eesti siseriiklike seaduste kui ka EL määrustega. Järelevalvet teostab Põllumajandus- ja Toiduamet (PTA).</p>
+            <ul>
+                <li><strong>Toiduseadus</strong> – kehtestab toidu käitlemise, enesekontrolli ja riikliku kontrolli alused.</li>
+                <li><strong>EL määrused 852/2004 ja 853/2004</strong> – toiduhügeeni üldeeskirjad toidukäitlejatele</li>
+                <li><strong>EL määrus 1169/2011</strong> – toidu märgistamine</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="enesekontroll">
+            <h2>Enesekontroll ja selle põhimõtted</h2>
+            <p>Toiduohutuse tagamisel on oluline roll enesekontrollisüsteemil. Toidukäitlejad on kohustatud kontrollima toidu ja selle käitlemise nõuetekohasust ning rakendama abinõusid selle tagamiseks.</p>
+            <p><strong>Enesekontrolliplaan</strong> on dokument, kus on kirjas:</p>
+            <ul>
+                <li>toidu käitlemisega seonduvad tegevused ja kaasnevad ohud</li>
+                <li>meetmed ohtude hindamiseks ja ennetamiseks</li>
+                <li>tegevused ohtude kõrvaldamiseks või viimiseks vastuvõetavale tasemele</li>
+                <li>tegevused juhuks kui tuvastatakse ohtlik toit</li>
+            </ul>
+
+            <h3>HACCP – 7 põhimõtet</h3>
+            <div class="märkus">
+                <strong>HACCP</strong> = Hazard Analysis and Critical Control Points<br>
+                Eesti keeles: <strong>ohtude analüüs ja kriitiliste kontrollpunktide süsteem</strong>
+            </div>
+            <ol>
+                <li><strong>Ohtude kindlakstegemine</strong> – mida tuleb vältida, mis tuleb kõrvaldada</li>
+                <li><strong>Kriitiliste kontrollpunktide (KKP) määramine</strong></li>
+                <li><strong>Kriitiliste piiride kehtestamine</strong></li>
+                <li><strong>Seire kehtestamine ja rakendamine</strong> KKP-des</li>
+                <li><strong>Korrigeerivad meetmed</strong> kehtestamine</li>
+                <li><strong>Kontrollmeetmete tõhususe hindamine</strong></li>
+                <li><strong>Dokumenteerimine</strong></li>
+            </ol>
+        </div>
+
+        <div class="sisu-kast" id="riskitegurid">
+            <h2>Riskitegurid ehk ohud</h2>
+            <p>Toiduohutust mõjutavad erinevad riskitegurid, mida jagatakse kolme põhirühma.</p>
+            <div class="märkus">
+                <strong>Tegelik riskide pingerida (statistika alusel):</strong><br>
+                1. Mikroobne saastumine &nbsp; 2. Toidu tasakaalustamatus &nbsp; 3. Saasteained keskkonnast &nbsp; 4. Looduslikud mürkained &nbsp; 5. Toidu lisaained
+            </div>
+            <ul>
+                <li><strong>Bioloogiline</strong> – kõige levinum saastumine, mõju näha üldjuhul kiiresti</li>
+                <li><strong>Füüsikaline</strong> – tarbijale tuntav, tekitab pigem ebameeldivust</li>
+                <li><strong>Keemiline</strong> – organoleptiliselt raske tuvastada, mõju pikaajalisem</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="bioloogiline">
+            <h2>Bioloogiline oht</h2>
+            <p>Bioloogiline oht on toiduohutuse kõige levinum riskitegur. Selle põhjustavad elusad organismid – alates silmale nähtavatest parasiitidest kuni bakterite, viiruste ja seenteni.</p>
+
+            <h3>Mikrobioloogilised ohud</h3>
+            <p><strong>Bakterid</strong> – paljunevad pooldumise teel iga ~20 minuti järel. Sobivates tingimustes: 0 → 8 tunni jooksul → 16 777 216 bakterit!</p>
+            <p><strong>Viirused</strong> – ei paljune toidus, kuid kanduvad toidu kaudu edasi (noroviirus, rotaviirus). Kaitse: isiklik hügieen ja toidu piisav kuumutamine.</p>
+            <p><strong>Hallitusseened</strong> – toodetud mükotoksiinid ei hävi keetmisel ega küpsetamisel. Hallitanud toitu ei tohi süüa isegi pärast termilist töötlemist.</p>
+            <p><strong>Algloomad</strong> (nt Giardia lamblia) – levivad saastunud toidu ja vee kaudu.</p>
+            <p><strong>Prioonid</strong> – põhjustavad veiste hullulehmatõbe. Ei hävi kuumutamisel, külmutamisel ega kuivatamisel.</p>
+
+            <h3>Toiduinfektsioonid</h3>
+            <ul>
+                <li><strong>Salmonelloos</strong> – toores linnuliha, munad. Sümptomid 12–36 h pärast. Ennetamine: kuumutamine ≥75 °C.</li>
+                <li><strong>Listerioos</strong> – lihatooted, suitsukala. Peiteperiood 3–70 päeva. Kasvab ka +1,5 °C juures!</li>
+                <li><strong>Kampüloos</strong> – üks sagedasemaid reisikõhulahtisuse põhjustajaid.</li>
+                <li><strong>E. coli EHEC</strong> – hävib ≥70 °C juures.</li>
+            </ul>
+
+            <h3>Toidumürgistused</h3>
+            <ul>
+                <li><strong>Botulism</strong> – koduste konservide oht. Toksiin hävib ≥85 °C / 5 min, kuid spoorid alles ≥120 °C.</li>
+                <li><strong>Stafülokokkoos</strong> – toksiin talub keetmist 1,5–2 tundi. Sümptomid 1–6 h pärast.</li>
+                <li><strong>Bacillus cereus</strong> – esineb riisi ja pastaga. Spoorid jäävad ellu kuumutamisel.</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="fuusikaline">
+            <h2>Füüsikalised ohud</h2>
+            <p>Füüsikalised ohud on toidusse sattunud võõrkehad, mis võivad tarbijat vigastada (klaas, metallikillud, puidutükid, harjased jne). Mõju ulatub ebamugavusest kuni tõsiste traumadeni.</p>
+            <ul>
+                <li>Katkised põrandad, kastid, kaubaalused</li>
+                <li>Puidutükid katkistest alustest</li>
+                <li>Harjaharjased purunenud harjadest</li>
+                <li>Joogipudelid, pastakad tootmisalal</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="keemiline">
+            <h2>Keemilised ohud</h2>
+            <p>Keemilised ohud on organoleptiliselt (lõhn, maitse, välimus) tavaliselt märkamatud. Mõju sageli pikaajalisem.</p>
+            <ul>
+                <li><strong>Saasteained</strong> – taimekaitsevahendite jäägid, akrüülamiidid, keskkonnasaaste</li>
+                <li><strong>Lisa-, lõhna- ja maitseained</strong> – valesti doseeritud E-ained</li>
+                <li><strong>Toiduga kokkupuutuvad materjalid</strong> – pakendid, söögiriistad, lõikelauad</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="sailitamine">
+            <h2>Säilitamine</h2>
+            <p>Igal toidul on kehtestatud säilivusaeg. <strong>Parim enne</strong> – ei ole kiiresti riknev toit. <strong>Kõlblik kuni</strong> – kiiresti riknev toit (ei tohi müüa ega tarbida pärast tähtaega).</p>
+            <h3>Säilitamistemperatuurid</h3>
+            <ul>
+                <li><strong>Külmutatud: ≤−18 °C</strong> – mikroobide areng peatub täielikult</li>
+                <li><strong>Jahutatud: +2…+6 °C</strong> – enamik kiiresti riknevaid toite</li>
+                <li><strong>Toatemperatuur: +20…+22 °C</strong> – ainult kuivained ja kõrge happesusega tooted</li>
+                <li><strong>Kuum toit: ≥63 °C</strong> – maksimaalselt 2 tundi, seejärel utiliseerida või jahutada</li>
+            </ul>
+            <div class="tähtis">
+                <strong>FIFO põhimõte:</strong> esimesena sisse – esimesena välja.<br>
+                <strong>Ülessulanud toodet ei tohi uuesti külmutada!</strong>
+            </div>
+        </div>
+
+        <div class="sisu-kast" id="ristsaastumine">
+            <h2>Ristsaastumine</h2>
+            <p>Ristsaastumine on mikroorganismide kandumine ühest toidust, pinnast või isikust teise – otseselt (toidud kokku) või kaudselt (töövahendid, pinnad, käed).</p>
+            <h3>Vältimiseks:</h3>
+            <ul>
+                <li>Kasuta toor- ja valmistoidu jaoks erinevaid töövahendeid</li>
+                <li>Hoia külmkapis valmistoit ülemisel, toortoit alumisel riiulil</li>
+                <li>Pese käsi erinevate tööprotseduuride vahel</li>
+                <li>Vaheta välisjalanõud enne toidukäitlemisalale sisenemist</li>
+                <li>Kasuta erinevaid puhastustarvikuid eri piirkondadele</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="puhastamine">
+            <h2>Puhastamine ja desinfitseerimine</h2>
+            <p><strong>Puhastamine</strong> eemaldab nähtava mustuse. <strong>Desinfitseerimine</strong> hävitab mikroorganismid. Desinfitseerimine ei ole tõhus mustale pinnale!</p>
+            <h3>Puhastamist mõjutavad tegurid:</h3>
+            <ul>
+                <li><strong>Vesi</strong> – rasvarikaste pindade puhul ≥40 °C, valgurikaste pindade puhul mitte üle +55 °C</li>
+                <li><strong>Pesuaine</strong> – eri aineid ei tohi segada, alati järgida tootja juhist</li>
+                <li><strong>Mehaaniline mõju</strong> – hõõrumine on vajalik biokileks</li>
+                <li><strong>Aeg</strong> – pesuaine peab piisavalt kaua pinnale mõjuma</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="jaatmed">
+            <h2>Jäätmekäitlus</h2>
+            <p>Jäätmed tuleb koguda liigiti, hoida kaanega konteinerites ja kiiresti tootmisalalt eemaldada.</p>
+            <ul>
+                <li><strong>Pakendijäätmed</strong> – plastik, kilekotid, kartong – hoida toidujäätmetest eraldi</li>
+                <li><strong>Biolagunevad jäätmed</strong> – toidujäätmed – tühjendada iga päev</li>
+                <li><strong>Klaas</strong> – katkine klaas on otsene füüsikaline oht, koguda eraldi</li>
+                <li><strong>Olmeprägi</strong> – ei tohi segada toidujäätmetega</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="kahjurid">
+            <h2>Kahjuritõrje</h2>
+            <p>Kahjurid (närilised, putukad, linnud) levitavad mikroorganisme ja saastavad toitu. Ennetamine on olulisem ja odavam kui tõrjumine.</p>
+            <ul>
+                <li>Koosta <strong>kahjuritõrjeplaan</strong></li>
+                <li>Sõlmi <strong>leping professionaalse teenusepakkujaga</strong></li>
+                <li>Hoia hooned korras, sulge kõik avaused</li>
+                <li>Kontrolli territooriumi vähemalt iga 3 kuu tagant</li>
+            </ul>
+            <div class="märkus">Elektrilisi putukatappe ei tohi paigaldada üle 2,4 m kõrgusele ega toidu kohal. UV torude tõhusus väheneb aasta möödudes – vahetada vähemalt kord aastas.</div>
+        </div>
+
+        <div class="sisu-kast" id="transport">
+            <h2>Transport</h2>
+            <p>Transport on külmahela kriitiline lüli. Temperatuuritingimused ei tohi katkeda ka lühiajaliselt.</p>
+            <ul>
+                <li><strong>Kuivtoit:</strong> kuiv ruum, RH ≤75%, temp ≤30 °C</li>
+                <li><strong>Jahutatud:</strong> +2…+6 °C</li>
+                <li><strong>Kodulinnuliha:</strong> ≤4 °C</li>
+                <li><strong>Külmutatud:</strong> ≤−18 °C (osaliselt sulanud toodet ei tohi uuesti külmutada!)</li>
+                <li><strong>Kuum toit:</strong> ≥63 °C, serveerida 2 tunni jooksul</li>
+            </ul>
+        </div>
+
+        <div class="sisu-kast" id="isiklik">
+            <h2>Isiklik hügieen</h2>
+            <p>Töötajad on toidukäitlemisettevõtte suurim ristsaastumise allikas. Isikliku hügieeni range järgimine on iga töötaja isiklik vastutus ja seaduslik kohustus.</p>
+            <h3>Käte pesemine on kohustuslik alati, kui:</h3>
+            <ul>
+                <li>Käid WC-s</li>
+                <li>Köhid või aevastad</li>
+                <li>Puudutad määrdunud pindu</li>
+                <li>Lähed pausile ja tuled tagasi</li>
+            </ul>
+            <div class="märkus">Käsi pesta sooja vee ja seebiga vähemalt <strong>20 sekundit</strong>. Kuivatada ühekordsete paberrätikutega.</div>
+            <div class="tähtis"><strong>Haiged töötajad (oksendamine, kõhulahtisus) peab kohe koju saatma!</strong></div>
+        </div>
+
+        <div class="sisu-kast" id="hygieeniriided">
+            <h2>Hügieeniriided</h2>
+            <p>Tööriietus kaitseb toitu töötaja kaudu levivate saastajate eest.</p>
+            <ul>
+                <li><strong>Puhtad</strong> – vahetada regulaarselt, mitte kanda väljaspool toidukäitlemisala</li>
+                <li><strong>Keha katvad</strong> – ei tohi olla lahtisi lõike, nööbid asendada trukiga</li>
+                <li><strong>Kinnised jalatsid</strong> – hoida eraldi tänavajatsitest</li>
+                <li><strong>Peakatted</strong> – juuksed ja habe peavad olema täielikult kaetud</li>
+                <li><strong>Kindad</strong> – ei asenda käte pesemist</li>
+            </ul>
+            <div class="hoiatus">Töötamise ajal on keelatud kanda sõrmuseid, kella ja muid esemeid!</div>
+        </div>
+
+        <div class="sisu-kast" id="ruumid">
+            <h2>Nõuded ruumidele</h2>
+            <p>Toidukäitlemisruumide struktuur peab välistama ristsaastumise võimaluse (EL määrus 852/2004).</p>
+            <ul>
+                <li>Välisuks, suitsuruumi uks ja WC uks ei tohi avaneda otse toidukäitlemisruumi</li>
+                <li>Seinad ja põrandad pestavad ja siledad</li>
+                <li>Tööetapid suunatud toorainest valmistoote poole</li>
+                <li>Kätepesukoht pesuvahendi ja kätekuivatiega</li>
+                <li>Kergesti puhastatavad seadmed</li>
+            </ul>
+        </div>
+
+        <div class="tähtis sisu-kast">
+            <h2>TÄHTIS – meelde jätta!</h2>
+            <ul>
+                <li>Täida isiklikke hügieenireegleid</li>
+                <li>Kasuta õigeid töövõtteid</li>
+                <li>Tõhus puhastamine</li>
+                <li>Tuvasta ebakõlad</li>
+                <li>Ole järjekindel</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Toiduohutus &nbsp;|&nbsp; Allikas: Nordnet Confluence</p>
+    </footer>
+</body>
+</html>

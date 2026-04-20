@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lao ja transpordi toiduhügieeni koolitus</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --cold: #0ea5e9;
+    --cold-dark: #0369a1;
+    --cold-light: #e0f2fe;
+    --cold-pale: #f0f9ff;
+    --warn: #f59e0b;
+    --warn-light: #fef3c7;
+    --danger: #ef4444;
+    --danger-light: #fee2e2;
+    --ok: #22c55e;
+    --ok-light: #dcfce7;
+    --dark: #0f172a;
+    --mid: #334155;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --surface: #f8fafc;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--dark);
+    background: var(--white);
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+
+  /* HEADER */
+  .doc-header {
+    border-left: 4px solid var(--cold);
+    padding: 24px 28px;
+    background: var(--cold-pale);
+    margin-bottom: 40px;
+  }
+  .doc-header .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cold-dark);
+    margin-bottom: 8px;
+  }
+  .doc-header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .doc-header .meta {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .doc-header .meta span::before {
+    content: '— ';
+    color: var(--cold);
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .toc-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .toc ol {
+    padding-left: 18px;
+  }
+  .toc li {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  .toc a {
+    color: var(--cold-dark);
+    text-decoration: none;
+  }
+  .toc a:hover { text-decoration: underline; }
+  .toc .sub {
+    list-style: none;
+    padding-left: 16px;
+    margin-top: 3px;
+  }
+  .toc .sub li::before {
+    content: '↳ ';
+    color: var(--cold);
+    font-size: 11px;
+  }
+
+  /* MODULE */
+  .module {
+    margin-bottom: 48px;
+  }
+  .module-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--cold);
+  }
+  .module-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--cold-dark);
+    padding: 4px 10px;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .module-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .module-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cold-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background: var(--cold);
+    flex-shrink: 0;
+  }
+  p { margin-bottom: 8px; color: var(--mid); }
+
+  /* LISTS */
+  ul, ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-bottom: 5px;
+    color: var(--mid);
+  }
+  li strong { color: var(--dark); }
+
+  /* CALLOUT BOXES */
+  .callout {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 3px solid;
+    font-size: 13px;
+  }
+  .callout-danger {
+    border-color: var(--danger);
+    background: var(--danger-light);
+    color: #7f1d1d;
+  }
+  .callout-warn {
+    border-color: var(--warn);
+    background: var(--warn-light);
+    color: #78350f;
+  }
+  .callout-ok {
+    border-color: var(--ok);
+    background: var(--ok-light);
+    color: #14532d;
+  }
+  .callout-info {
+    border-color: var(--cold);
+    background: var(--cold-light);
+    color: var(--cold-dark);
+  }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* TEMPERATURE TABLE */
+  .temp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .temp-card {
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    background: var(--cold-pale);
+    text-align: center;
+  }
+  .temp-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .temp-card .value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--cold-dark);
+    margin-bottom: 4px;
+  }
+  .temp-card .desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .temp-card.danger-zone {
+    background: var(--danger-light);
+    border-color: #fca5a5;
+  }
+  .temp-card.danger-zone .value { color: var(--danger); }
+
+  /* CHECKLIST TABLE */
+  .checklist {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .checklist thead th {
+    background: var(--dark);
+    color: var(--white);
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .checklist tbody tr:nth-child(even) {
+    background: var(--surface);
+  }
+  .checklist tbody tr:hover {
+    background: var(--cold-pale);
+  }
+  .checklist td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--mid);
+  }
+  .checklist td:first-child {
+    font-weight: 500;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+  .checklist td .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--cold-dark);
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+  }
+  .badge-always { background: var(--danger-light); color: #991b1b; }
+  .badge-shift { background: var(--warn-light); color: #92400e; }
+  .badge-daily { background: var(--ok-light); color: #166534; }
+
+  /* RISK CATEGORIES */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .risk-card {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+  .risk-card .risk-level {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .risk-card.high { border-top: 3px solid var(--danger); }
+  .risk-card.high .risk-level { color: var(--danger); }
+  .risk-card.mid { border-top: 3px solid var(--warn); }
+  .risk-card.mid .risk-level { color: var(--warn); }
+  .risk-card.low { border-top: 3px solid var(--ok); }
+  .risk-card.low .risk-level { color: var(--ok); }
+  .risk-card .risk-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .risk-card ul {
+    font-size: 12px;
+    padding-left: 14px;
+    color: var(--muted);
+  }
+
+  /* KEY QUESTIONS */
+  .key-questions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .kq {
+    background: var(--dark);
+    color: var(--white);
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .kq .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--cold);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .kq .question {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--white);
+  }
+
+  /* DIVIDER */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid var(--cold);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .doc-footer .legal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+  }
+
+  @media print {
+    body { padding: 20px; font-size: 12px; }
+    .module { page-break-inside: avoid; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="tag">Toiduhügieeni koolitus · Eriosa</div>
+  <h1>Lao ja transpordi toiduhügieen<br>Pakendatud külm- ja jahetooted</h1>
+  <div class="meta">
+    <span>Sihtgrupp: laohoidjad, tõstukijuhid, autojuhid, kaupade vastuvõtjad</span>
+    <span>4 moodulit + kontrollnimekiri</span>
+    <span>Alusmaterjal: EL 852/2004, Toiduseadus</span>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Sisukord</div>
+  <ol>
+    <li><a href="#m1">Miks see loeb: riskid laos ja transpordis</a>
+      <ul class="sub">
+        <li><a href="#m1-1">Toidukäitleja roll ja vastutus</a></li>
+        <li><a href="#m1-2">Pakendatud külm- ja jahetoodete riskikategooriad</a></li>
+        <li><a href="#m1-3">Peamised ohud laos ja transpordis</a></li>
+      </ul>
+    </li>
+    <li><a href="#m2">Külmaahel: ladustamine ja temperatuurikontroll</a>
+      <ul class="sub">
+        <li><a href="#m2-1">Külmaahel ja selle tähtsus</a></li>
+        <li><a href="#m2-2">Nõutavad temperatuurid</a></li>
+        <li><a href="#m2-3">Külmlao kasutamine</a></li>
+        <li><a href="#m2-4">FIFO põhimõte laos</a></li>
+        <li><a href="#m2-5">Toote paigutus külmlaos</a></li>
+      </ul>
+    </li>
+    <li><a href="#m3">Kaupade vastuvõtt ja transport</a>
+      <ul class="sub">
+        <li><a href="#m3-1">Kaupade vastuvõtt</a></li>
+        <li><a href="#m3-2">Temperatuuri nõuded transpordil</a></li>
+        <li><a href="#m3-3">Veoruumi hügieen</a></li>
+        <li><a href="#m3-4">Laadimisprotsess</a></li>
+      </ul>
+    </li>
+    <li><a href="#m4">Isiklik hügieen ja tööprotseduurid laos</a>
+      <ul class="sub">
+        <li><a href="#m4-1">Isiklik hügieen laokeskkonnas</a></li>
+        <li><a href="#m4-2">Tööriietuse nõuded</a></li>
+        <li><a href="#m4-3">Kahjuritõrje laos</a></li>
+        <li><a href="#m4-4">Puhastamine laos</a></li>
+      </ul>
+    </li>
+    <li><a href="#checklist">Igapäevane kontrollnimekiri</a></li>
+  </ol>
+</div>
+
+<!-- MOODUL 1 -->
+<div class="module" id="m1">
+  <div class="module-header">
+    <div class="module-num">MOODUL 01</div>
+    <div>
+      <div class="module-title">Miks see loeb: riskid laos ja transpordis</div>
+      <div class="module-subtitle">Vastutus, riskikategooriad ja peamised ohud</div>
+    </div>
+  </div>
+
+  <div class="section" id="m1-1">
+    <div class="section-title">1.1 Toidukäitleja roll ja vastutus</div>
+    <p>Toidukäitleja ei ole ainult kokk. Iga isik, kes oma töö käigus puutub kokku toiduga, toidupakendi või toidukäitlemisruumidega, on toidukäitleja — sealhulgas laohoidja, tõstukijuht ja toiduaineid vedav autojuht.</p>
+    <div class="callout callout-info">
+      <strong>Seaduslik alus</strong>
+      Toiduseadus ja EL määrus 852/2004 kohustavad iga toidukäitlejat tagama toidu ohutuse. Enesekontrollikohustus kehtib kõigile — ka laotöötajatele.
+    </div>
+    <p><strong>Halva hügieeni tagajärjed laokeskkonnas:</strong></p>
+    <ul>
+      <li>Toote utiliseerimine — otsene rahaline kahju</li>
+      <li>Kliendi haigestumine — kohtulik vastutus ja kahjunõuded</li>
+      <li>Ettevõtte maine — kaotatud kliendid ja lepingud</li>
+      <li>PTA järelevalve — trahvid ja tegevuse peatamine</li>
+    </ul>
+  </div>
+
+  <div class="section" id="m1-2">
+    <div class="section-title">1.2 Pakendatud külm- ja jahetoodete riskikategooriad</div>
+    <p>Kõik toiduained ei ole võrdse riskiga. Laotöötaja peab teadma, milliste toodetega ta tegeleb.</p>
+    <div class="risk-grid">
+      <div class="risk-card high">
+        <div class="risk-level">1. kategooria · Kõrge risk</div>
+        <div class="risk-title">Nõuab erilist tähelepanu</div>
+        <ul>
+          <li>Jahutatud liha- ja kalatooted</li>
+          <li>Kodulinnuliha</li>
+          <li>Pastöriseerimata piim</li>
+          <li>Valmistoidud</li>
+          <li>Lastetoit</li>
+        </ul>
+      </div>
+      <div class="risk-card mid">
+        <div class="risk-level">2. kategooria · Keskmine risk</div>
+        <div class="risk-title">Tähelepanu vajalik</div>
+        <ul>
+          <li>Külmutatud liha/kala/munatooted</li>
+          <li>Kuivatatud liha/kalatooted</li>
+          <li>Einevõileivad</li>
+          <li>Rasvarikkad tooted</li>
+        </ul>
+      </div>
+      <div class="risk-card low">
+        <div class="risk-level">3. kategooria · Madal risk</div>
+        <div class="risk-title">Standardne käitlemine</div>
+        <ul>
+          <li>pH &lt; 4,6 tooted</li>
+          <li>Keedised</li>
+          <li>Suhkrurikkad maiustused</li>
+          <li>Õlid ja rasvad</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout callout-warn">
+      <strong>Oluline meelde jätta</strong>
+      Pakendatud toode ei ole automaatselt ohutu. Pakend kaitseb füüsikalise saastumise eest, kuid vale temperatuur käivitab bakterite kasvu pakendi sees — see ei ole silmaga nähtav.
+    </div>
+  </div>
+
+  <div class="section" id="m1-3">
+    <div class="section-title">1.3 Peamised ohud laos ja transpordis</div>
+    <ul>
+      <li><strong>Mikrobioloogiline oht</strong> — temperatuuri katkestus käivitab bakterite kiire kasvu; Salmonella, Listeria ja Campylobacter on levinuimad probleemid külmtoodete ahelas</li>
+      <li><strong>Füüsikaline oht</strong> — katkised kaubaalused, kastid, tõstuki põhjustatud kahjustused; puidukillud, pakendifragmendid toodetes</li>
+      <li><strong>Ristsaatumine</strong> — väliskeskkond, jalanõud, pakendite põhjad, tõstuki rehvid, veo ajal eelmise koorma jäägid</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MOODUL 2 -->
+<div class="module" id="m2">
+  <div class="module-header">
+    <div class="module-num">MOODUL 02</div>
+    <div>
+      <div class="module-title">Külmaahel: ladustamine ja temperatuurikontroll</div>
+      <div class="module-subtitle">Temperatuurid, FIFO ja toote õige paigutus</div>
+    </div>
+  </div>
+
+  <div class="section" id="m2-1">
+    <div class="section-title">2.1 Külmaahel ja selle tähtsus</div>
+    <p>Külmaahel tähendab toidu hoidmist tootja poolt määratud temperatuuril alates tootmisest kuni tarbimiseni. Iga lüli — tootja, hulgimüüja, ladu, transport, pood — on vastutav selle järjepidevuse eest.</p>
+    <div class="callout callout-danger">
+      <strong>Kriitiliselt oluline</strong>
+      Bakterid poolduvad iga ~20 minuti järel. 8 tunniga võib ühest bakterist saada üle 16 miljoni. Külmaahela katkemist ei ole võimalik hiljem "parandada" — vale temperatuuriga toodet ei saa tagantjärele ohutumaks muuta.
+    </div>
+    <p>Väldi eritemperatuuri vajavate toodete hoidmist auto pagasiruumis ka lühiajaliselt. Kasuta termoskarpi või -kotti.</p>
+  </div>
+
+  <div class="section" id="m2-2">
+    <div class="section-title">2.2 Nõutavad temperatuurid</div>
+    <div class="temp-grid">
+      <div class="temp-card">
+        <div class="label">Jahutatud tooted</div>
+        <div class="value">+2…+6 °C</div>
+        <div class="desc">Liha, kala, piimatooted, valmistoidud</div>
+      </div>
+      <div class="temp-card">
+        <div class="label">Kodulinnuliha</div>
+        <div class="value">≤ +4 °C</div>
+        <div class="desc">Rangemad nõuded salmonella tõttu</div>
+      </div>
+      <div class="temp-card">
+        <div class="label">Külmutatud tooted</div>
+        <div class="value">≤ −18 °C</div>
+        <div class="desc">Külmutamine toimub alla −25 °C</div>
+      </div>
+      <div class="temp-card danger-zone">
+        <div class="label">⚠ Ohtlik tsoon</div>
+        <div class="value">+6…+63 °C</div>
+        <div class="desc">Selles vahemikus bakterid kasvavad kiiresti — aeg peab olema minimaalne</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="m2-3">
+    <div class="section-title">2.3 Külmlao kasutamine</div>
+    <ul>
+      <li><strong>Temperatuuri logimine</strong> — mõõda ja dokumenteeri iga vahetuse algul; kõrvalekalle tuleb viivitamata üle vaadata</li>
+      <li><strong>Uste haldamine</strong> — ava kiiresti ja sulge kohe; kontrolli tihendite seisukorda regulaarselt</li>
+      <li><strong>Riiulite koormamine</strong> — ülekoormus halvendab õhuringet ja temperatuuri ühtlust; ära blokeeri ventilaatoreid</li>
+      <li><strong>Külmeelemendid</strong> — jääkiht elementidel halvendab soojusülekannet ja suurendab elektrikulu; ärge asetage tooteid vastu külmaelementi</li>
+      <li><strong>Kuuma toitu</strong> ei tohi külmikusse panna — see tõstab temperatuuri ümbritsevates toodetes</li>
+    </ul>
+    <div class="callout callout-info">
+      <strong>Külmutamise reegel</strong>
+      Külmutada tohib ainult tooteid, mida ei ole varem külmutatud ja sulatatud. Külmutatav kogus ei tohi ületada 5–10% külmiku mahust — suurema koguse korral külmumine aeglustub.
+    </div>
+  </div>
+
+  <div class="section" id="m2-4">
+    <div class="section-title">2.4 FIFO põhimõte laos</div>
+    <p><strong>FIFO = esimesena sisse, esimesena välja.</strong> Vanemad tooted liiguvad alati ette, uued tulevad taha.</p>
+    <ul>
+      <li><strong>"Parim enne"</strong> — ei ole kiiresti riknev; ohutu ka pärast tähtaega, kuid kvaliteet võib langeda; võib müüa tähtaja ületanuna, kui ostjat teavitatakse</li>
+      <li><strong>"Kõlblik kuni"</strong> — kiiresti riknev toode; ei tohi müüa ega tarbida pärast tähtaega; eraldi hoidmine ja märgistamine kohustuslik</li>
+      <li>Aegunud tooted eraldada viivitamata ja märgistada selgelt</li>
+    </ul>
+  </div>
+
+  <div class="section" id="m2-5">
+    <div class="section-title">2.5 Toote paigutus külmlaos</div>
+    <ul>
+      <li><strong>Toortoit alumistele riiulitele</strong> — lekke korral ei saastu all olevad tooted</li>
+      <li><strong>Valmistoidud ülemistele riiulitele</strong> — eemal toortoidu võimalikust lekkeohust</li>
+      <li><strong>Kaubaalused põrandast eemale</strong> — toodete ja põranda vahekaugus väldib saastumist</li>
+      <li><strong>Eraldamine liigiti</strong> — liha, kala ja piimatooted hoida eraldi, et vältida lõhnasegamini ja ristsaastumist</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MOODUL 3 -->
+<div class="module" id="m3">
+  <div class="module-header">
+    <div class="module-num">MOODUL 03</div>
+    <div>
+      <div class="module-title">Kaupade vastuvõtt ja transport</div>
+      <div class="module-subtitle">Vastuvõtukontroll, veotemperatuurid ja veoruumi hügieen</div>
+    </div>
+  </div>
+
+  <div class="section" id="m3-1">
+    <div class="section-title">3.1 Kaupade vastuvõtt</div>
+    <p>Vastuvõtt on külmaahela kriitiline kontrollpunkt. Iga tarne tuleb kontrollida enne lattu suunamist.</p>
+    <ul>
+      <li><strong>Temperatuuri mõõtmine</strong> — mõõda toote temperatuur vastuvõtul; dokumenteeri tulemus</li>
+      <li><strong>Pakendi visuaalne kontroll</strong> — terviklikkus, deformatsioon, niiskusjäljed, rebend</li>
+      <li><strong>Säilivusaja kontroll</strong> — "kõlblik kuni" kuupäev; lühikese järelejäänud ajaga tooted eraldada</li>
+      <li><strong>Toote tagasilükkamine</strong> — vale temperatuuri, kahjustatud pakendi või aegunud toote puhul keeldu vastuvõtust; dokumenteeri ja teavita vastutavat isikut</li>
+    </ul>
+    <div class="callout callout-ok">
+      <strong>Hea tava</strong>
+      Võta kaup vastu võimalikult välisukse lähedal. Jälgi, et tarnija ei siseneks välisjalanõudes toidukäitlemisalale.
+    </div>
+  </div>
+
+  <div class="section" id="m3-2">
+    <div class="section-title">3.2 Temperatuuri nõuded transpordil</div>
+    <ul>
+      <li><strong>Jahutatud (+2…+6 °C)</strong> — külmutusseade peab temperatuuri aktiivselt tagama ka suvesoojal, mitte ainult olemasolevat temperatuuri hoidma</li>
+      <li><strong>Kodulinnuliha (≤ +4 °C)</strong> — rangemad nõuded tulenevalt salmonella kõrgemast esinemissagedusest</li>
+      <li><strong>Külmutatud (≤ −18 °C)</strong> — osaline sulamine ja uuesti külmutamine on keelatud; halvendab kvaliteeti ja soodustab mikroobide kasvu</li>
+      <li><strong>Kuivtoit (≤ +30 °C, RH ≤ 75%)</strong> — kõrge niiskus soodustab hallitust ja pakendite kahjustumist</li>
+    </ul>
+    <div class="callout callout-danger">
+      <strong>Keelatud</strong>
+      Külmutatud toidu osaline sulamine ja uuesti külmutamine on rangelt keelatud. Juba kord sulanud toodet ei tohi uuesti külmutada.
+    </div>
+  </div>
+
+  <div class="section" id="m3-3">
+    <div class="section-title">3.3 Veoruumi hügieen</div>
+    <ul>
+      <li><strong>Puhastamine enne laadimist</strong> — eelmise koorma jäägid ja lekked on ristsaastumise allikas; veoruum peab olema puhas iga koorma ees</li>
+      <li><strong>Temperatuuri eeljahtutamine</strong> — veoruum peab olema nõutaval temperatuuril enne laadimist, mitte alles veo ajal</li>
+      <li><strong>Eri toodete eraldamine</strong> — toortoit ja valmistoit veos eraldi; kasuta eraldusseinu või eraldi konteinereid</li>
+      <li><strong>Temperatuuri logimine</strong> — veo ajal temperatuuri dokumenteerimine; andmed säilitada</li>
+    </ul>
+  </div>
+
+  <div class="section" id="m3-4">
+    <div class="section-title">3.4 Laadimis- ja mahalaadimisprotsess</div>
+    <ul>
+      <li><strong>Kiirus on oluline</strong> — toode ei tohi ohtlikus tsoonis (+6…+63 °C) olla kauem kui vältimatu; uksed hoida kinni</li>
+      <li><strong>Tõstuki kasutamine</strong> — kastide ja pakendite kahjustamise vältimine; katkised kastid on füüsikaline oht</li>
+      <li><strong>Kaubaaluste seisukord</strong> — katkised, ogalised alused: puidukillud võivad läbida kasti põhja ja rikkuda pakendi; kontrolli enne kasutamist</li>
+      <li><strong>Kastide kaaned</strong> — kastidel peab olema kaas; ilma kaaneta kast eelmise koorma või põranda saastatusega on ristsaastumise allikas</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MOODUL 4 -->
+<div class="module" id="m4">
+  <div class="module-header">
+    <div class="module-num">MOODUL 04</div>
+    <div>
+      <div class="module-title">Isiklik hügieen ja tööprotseduurid laos</div>
+      <div class="module-subtitle">Kätepesu, tööriietuse, kahjuritõrje ja puhastamine</div>
+    </div>
+  </div>
+
+  <div class="section" id="m4-1">
+    <div class="section-title">4.1 Isiklik hügieen laokeskkonnas</div>
+    <p>Töötajad on toidukäitlemise suurim ristsaastumise allikas. Ka laooperaator, kes ei puutu toiduga otseselt kokku, liigub keskkondades, kust mikroorganismid toidule kanduvad.</p>
+    <p><strong>Kätepesu on kohustuslik pärast:</strong></p>
+    <ul>
+      <li>WC kasutamist</li>
+      <li>Tõstuki kasutamist (käed puutuvad kokku saastunud pindadega)</li>
+      <li>Prügi viimist või jäätmete käitlemist</li>
+      <li>Pakendite sorteerimist (välispakendid on saastunud)</li>
+      <li>Pausi — enne toidukäitlemise jätkamist</li>
+      <li>Köhimist või aevastamist</li>
+    </ul>
+    <div class="callout callout-warn">
+      <strong>Vigastused</strong>
+      Käel oleva haava puhul kasutada silmatorkavat värvi veekindlat plaastrit. Tööpiirkonnas peavad olema esmaabivahendid kätte saadavad. Haigestunud töötaja (oksendamine, kõhulahtisus) peab kohe koju minema.
+    </div>
+  </div>
+
+  <div class="section" id="m4-2">
+    <div class="section-title">4.2 Tööriietuse nõuded</div>
+    <ul>
+      <li><strong>Kinnised tööjalatsid</strong> — välisjalatseid ei tohi kanda toidukäitlemisalal</li>
+      <li><strong>Jalanõude vahetus</strong> — prügi viimisel, välisalale minekul, laadimisplatvormi ja külmlao vahel liikumisel</li>
+      <li><strong>Puhas tööriietuse</strong> — määrdunud tööriietusel kasvavad bakterid; vaheta regulaarselt</li>
+      <li><strong>Must tsoon / puhas tsoon</strong> — laadimisplatvorm ja välisala on must tsoon; külmladu on puhas tsoon; liikumine mustalt tsoonilt puhtale nõuab jalanõude vahetust</li>
+    </ul>
+  </div>
+
+  <div class="section" id="m4-3">
+    <div class="section-title">4.3 Kahjuritõrje laos</div>
+    <p>Kahjurid (hiired, rotid, prussakad, linnud) on laokeskkonnas eriti ohtlikud — nad ligutavad kõikjal, paljunevad kiiresti ja neid on raske avastada.</p>
+    <ul>
+      <li><strong>Tunnused, mida jälgida</strong> — väljaheited, närimistunnused pakenditel, pesad, kahjurite jäljed</li>
+      <li><strong>Vastuvõetud kauba kontroll</strong> — tarne saabumisel kontrolli pakendeid kahjurite tunnuste suhtes</li>
+      <li><strong>Kahjuritõrjeplaan</strong> — kirjalik plaan peab olema ajakohane; leping professionaalse teenusepakkujaga</li>
+      <li><strong>Kahjuri avastamisel</strong> — teavita viivitamata vastutavat isikut; ära tegutse ise ilma juhiseta</li>
+      <li><strong>Elektriseadmed</strong> — UV-lambid kahjurite tõrjeks ei tohi olla kõrgemal kui 2,4 m ega toidu kohal; vahetada vähemalt kord aastas</li>
+    </ul>
+  </div>
+
+  <div class="section" id="m4-4">
+    <div class="section-title">4.4 Puhastamine laos</div>
+    <ul>
+      <li><strong>Külmlao puhastamine</strong> — regulaarne märgpuhastus; puhastusaine valik vastavalt pinnale; klooriained ei tohi kokku puutuda happeliste puhastusainetega</li>
+      <li><strong>Värvikoodid</strong> — eri tsoonide jaoks erinevad puhastustarvikud (harjad, lapid, ämbrid); välisala ja külmlao vahendid ei tohi seguned</li>
+      <li><strong>Jäätmete käitlemine</strong> — biolagunevad, pakendijäätmed ja klaas eraldi konteineritesse; biolagunevad tühjendada iga päev; klaas eraldi, katkine klaas on otsene füüsikaline oht</li>
+      <li><strong>Lekete likvideerimine</strong> — vedeliku leke toidukäitlemisalal tuleb viivitamata likvideerida; kasuta piirkonna puhastusvahendit</li>
+      <li><strong>Niiske papp</strong> — märgunud paberijäätmed eemaldada viivitamata; niiske papp on hallituse kasvukeskkond</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<div class="module" id="checklist">
+  <div class="module-header">
+    <div class="module-num">TÖÖVAHEND</div>
+    <div>
+      <div class="module-title">Igapäevane kontrollnimekiri</div>
+      <div class="module-subtitle">Laotöötaja ja autojuhi praktiline kontroll</div>
+    </div>
+  </div>
+
+  <table class="checklist">
+    <thead>
+      <tr>
+        <th style="width:26%">Toiming</th>
+        <th style="width:36%">Kontrollpunkt</th>
+        <th style="width:20%">Nõutud väärtus</th>
+        <th style="width:18%">Sagedus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Külmlao temp. (jahutatud)</td>
+        <td>Termomeeter — logi tulemus</td>
+        <td class="mono">+2…+6 °C</td>
+        <td><span class="badge badge-shift">Iga vahetus</span></td>
+      </tr>
+      <tr>
+        <td>Külmlao temp. (külmutatud)</td>
+        <td>Termomeeter — logi tulemus</td>
+        <td class="mono">≤ −18 °C</td>
+        <td><span class="badge badge-shift">Iga vahetus</span></td>
+      </tr>
+      <tr>
+        <td>Kauba vastuvõtt</td>
+        <td>Temperatuur, pakend, säilivusaeg</td>
+        <td class="mono">Vt nõuded</td>
+        <td><span class="badge badge-always">Iga tarne</span></td>
+      </tr>
+      <tr>
+        <td>FIFO rakendamine</td>
+        <td>Vanemad tooted ette, uued taha</td>
+        <td>—</td>
+        <td><span class="badge badge-always">Iga ladustamine</span></td>
+      </tr>
+      <tr>
+        <td>Veoruumi temp.</td>
+        <td>Enne laadimist — eeljahtutamine</td>
+        <td class="mono">Vastavalt tootele</td>
+        <td><span class="badge badge-always">Enne laadimist</span></td>
+      </tr>
+      <tr>
+        <td>Veoruumi puhtus</td>
+        <td>Eelmise koorma jäägid, lekked</td>
+        <td>Puhas</td>
+        <td><span class="badge badge-always">Enne laadimist</span></td>
+      </tr>
+      <tr>
+        <td>Jalanõude vahetus</td>
+        <td>Välisal → siseala; prügi → ladu</td>
+        <td>—</td>
+        <td><span class="badge badge-always">Iga kord</span></td>
+      </tr>
+      <tr>
+        <td>Kätepesu</td>
+        <td>WC, paus, prügi, tõstuik, köha</td>
+        <td>Seep + vesi ≥20 sek</td>
+        <td><span class="badge badge-always">Iga kord</span></td>
+      </tr>
+      <tr>
+        <td>Pakendite terviklikkus</td>
+        <td>Silmavaatlus: lekked, rebend, niiskus</td>
+        <td>Terve pakend</td>
+        <td><span class="badge badge-always">Iga käitlemine</span></td>
+      </tr>
+      <tr>
+        <td>Kaubaaluste seisukord</td>
+        <td>Katkised, ogalised alused kõrvaldada</td>
+        <td>Terve alus</td>
+        <td><span class="badge badge-always">Iga kasutus</span></td>
+      </tr>
+      <tr>
+        <td>Jäätmete tühjendamine</td>
+        <td>Biolagunevad eraldi; klaas eraldi</td>
+        <td>—</td>
+        <td><span class="badge badge-daily">Iga päev</span></td>
+      </tr>
+      <tr>
+        <td>Kahjurite kontroll</td>
+        <td>Väljaheited, närimistunnused, pesad</td>
+        <td>Kahjurite puudumine</td>
+        <td><span class="badge badge-daily">Iga päev</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr />
+
+<!-- 3 KEY QUESTIONS -->
+<div class="section">
+  <div class="section-title">Kolm põhiküsimust laooperaatorile</div>
+  <div class="key-questions">
+    <div class="kq">
+      <div class="num">01</div>
+      <div class="question">Kas temperatuur on õige? — vastuvõtul, ladustamisel, transpordil, kogu aeg</div>
+    </div>
+    <div class="kq">
+      <div class="num">02</div>
+      <div class="question">Kas pakend on terve? — füüsikaline oht ja ristsaastumine</div>
+    </div>
+    <div class="kq">
+      <div class="num">03</div>
+      <div class="question">Kas külmaahel on katkenud? — ja mida siis teha</div>
+    </div>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <div>
+    <div class="legal">Alusmaterjal: Toiduseadus · EL määrus 852/2004 · EL määrus 853/2004</div>
+    <div style="margin-top:4px; color:var(--muted);">Toiduhügieeni koolitus — lao ja transpordi eriosa</div>
+  </div>
+  <div style="text-align:right; color:var(--muted);">
+    Pakendatud külm- ja jahetooted
+  </div>
+</div>
+
+</body>
+</html>
